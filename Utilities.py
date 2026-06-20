@@ -36,5 +36,11 @@ def monitor_file_changes(dates, BaseUrl):
 			current_content = read_file_content(BaseUrl+dates[i])
 
 			if current_content != previous_content[i]:
-				Smilebus.send_notification(f"⚠️An update detected for {dates[i]}\n{CompareStr(previous_content[i], current_content)}" )
-				previous_content[i] = current_content
+				while True:
+					try:
+						print(f"⚠️An update detected for {dates[i]}\n{CompareStr(previous_content[i], current_content)}")
+						Smilebus.send_notification(f"⚠️An update detected for {dates[i]}\n{CompareStr(previous_content[i], current_content)}" )
+						previous_content[i] = current_content
+						break
+					except Exception as e:
+						print(f"Error: {str(e)}")  

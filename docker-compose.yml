@@ -1,0 +1,12 @@
+services:
+  smilebus:
+    image: ${SMILEBUS_IMAGE:-smilebus-parser}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+        TOKEN:        ${SMILEBUS_PARSER_TOKEN}
+        CHAT_ID:      ${SMILEBUS_PARSER_CHAT_ID}
+        ID_CITY_FROM: ${SMILEBUS_PARSER_ID_CITY_FROM}
+        ID_CITY_TO:   ${SMILEBUS_PARSER_ID_CITY_TO}
+        DATES:        ${SMILEBUS_PARSER_DATES:-"01.01.1970, 02.01.1970"}
